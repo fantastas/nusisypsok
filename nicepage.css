@@ -1702,6 +1702,7 @@ span.fr-img-caption.fr-view {
 video{
   margin: auto;
   padding: auto;
+  visibility: hidden;
 }
 
 @keyframes fadeIn {

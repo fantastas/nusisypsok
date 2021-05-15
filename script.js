@@ -16,7 +16,7 @@ function startVideo(){
 }
 let i = 0;
 let happiness = 0;
-video.addEventListener('play', ()=>{
+video.addEventListener('play', () => {
 	const canvas = faceapi.createCanvasFromMedia(video)
 	// document.body.append(canvas);
 	const displaySize = {width: video.width, height: video.height}
@@ -25,12 +25,13 @@ video.addEventListener('play', ()=>{
 		const detections = await faceapi.detectAllFaces(video, 
 		new faceapi.TinyFaceDetectorOptions()).
 		withFaceLandmarks().withFaceExpressions()
-		const resizedDetections = faceapi.resizeResults(detections, displaySize);
-		canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
+		// const resizedDetections = faceapi.resizeResults(detections, displaySize);
+		// canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
 		// faceapi.draw.drawDetections(canvas, resizedDetections);
 		// faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
 		// faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 		const expressions = detections[0].expressions;
+		// console.log(expressions);
 		const landmarkPositions = detections[0].landmarks._positions;
 		var leftEye = [];
 		var rightEye = [];
@@ -40,35 +41,37 @@ video.addEventListener('play', ()=>{
 			leftEye.push(landmarkPositions[i]);
 		}
 		
-		let firstLeftEyeY = 0;
 		let leftEyeY = 0;
+		let leftStarterY = leftEye[0]._y * 6;
 		
-		// let leftStarterY = leftEye[0]._y * 6;
-
 		for(let i = 0;i < leftEye.length; i++){
 			leftEyeY += leftEye[i]._y;
 		}
 		leftEyeY /= leftStarterY; 
+		// console.log(leftEyeY);
 		
-		if(leftEyeY < 1.03){
+		if(leftEyeY < 1.04){
 			closedLeft = true;
+			console.log('left_closed');
 		}
-
-		// for(let i = 43;i <= 48; i++){
-		// 	rightEye.push(landmarkPositions[i]);
-		// }
 		
-		// let rightEyeY = 0;
-		// let rightStarterY = rightEye[0]._y * 6;
-
-		// for(let i = 0;i < rightEye.length; i++){
-		// 	rightEyeY += rightEye[i]._y;
-		// }
-		// rightEyeY /= rightStarterY; 
+		////////////////////////////////////////////////
+		for(let i = 43;i <= 48; i++){
+			rightEye.push(landmarkPositions[i]);
+		}
 		
-		// if(rightEyeY < 1.03){
-		// 	closedRight = true;
-		// }
+		let rightEyeY = 0;
+		let rightStarterY = rightEye[0]._y * 6;
+
+		for(let i = 0;i < rightEye.length; i++){
+			rightEyeY += rightEye[i]._y;
+		}
+		rightEyeY /= rightStarterY; 
+		// console.log(rightEyeY);
+		if(rightEyeY < 1.15){
+			closedRight = true;
+			console.log('right closed');
+		}
 		
 		// console.log(leftEyeY, rightEyeY);
 
@@ -116,5 +119,5 @@ video.addEventListener('play', ()=>{
 			});
 			
 		
-	}, 1000)
+	}, 100)
 });
