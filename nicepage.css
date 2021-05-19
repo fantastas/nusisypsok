@@ -4,7 +4,10 @@
   content: "";
   height: 0;
  }
-
+#selfclick{
+  visibility: hidden;
+  display: none;
+}
 .fr-hide-by-clipping {
   position: absolute;
   width: 1px;

@@ -1,10 +1,22 @@
-<html>
+<!DOCTYPE html>
 <head>
+	<script defer src="face-api.min.js"></script>
+	<script defer src="email-script.js"></script>
+	<script src="https://smtpjs.com/v3/smtp.js"></script>
+	<link rel="stylesheet" href="email.css" media="screen">
+
+	<meta charset="utf-8">
+	<title>Morzės rašiklis</title>
 </head>
 <body>
-  <p>
-    <a href="mailto:msgitara@gmail.com?cc=mariussurvila@stud.mif.vu.lt&bcc=mariussurvila@stud.mif.vu.lt&subject=Disabled Help Call&body=Message">Click Here </a>
-    for Feedback
-  </p>
+<div class="centered-content">
+	<video id="video" width="550px" height="400px" autoplay muted></video>
+
+	<form method="post">
+		<input type="button" id="selfclick" value="Send Email"
+		  onclick="sendEmail()" />
+	  </form>
+</div>
 </body>
+
 </html>
