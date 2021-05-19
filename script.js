@@ -1,5 +1,30 @@
 video = document.getElementById('video');
 matuoklis = document.getElementById('matuoklis');
+var morseString = "";
+
+
+var MORSE_CODE = {".-": "a", "-...":"b", "-.-.": "c", "-..": "d", ".":"e", "..-.":"f", "--.":"g", "....":"h", 
+"..":"i", ".---":"j", "-.-":"k", ".-..":"l", "--":"m", "-.":"n", "---":"o", ".--.":"p", "--.-":"q", ".-.":"r", 
+"...":"s", "-":"t", "..-":"u", "...-":"v", ".--":"w", "-..-":"x", "-.--":"y", "--..":"z", ".----":"1", "..---":"2", 
+"...--":"3", "....-":"4", ".....":"5", "-....":"6", "--...":"7", "---..":"8", "----.":"9", "-----":"0", "|":" "};
+
+var decodeMorse = function(morseCode){
+  var words = (morseCode).split('  ');
+  var letters = words.map((w) => w.split(' '));
+  var decoded = [];
+
+  for(var i = 0; i < letters.length; i++){
+    decoded[i] = [];
+    for(var x = 0; x < letters[i].length; x++){
+        if(MORSE_CODE[letters[i][x]]){
+            decoded[i].push( MORSE_CODE[letters[i][x]] );
+        }
+    }
+  }
+
+  return decoded.map(arr => arr.join('')).join(' ');
+}
+
 
 var auth = false;
 Promise.all([
@@ -30,94 +55,96 @@ video.addEventListener('play', () => {
 		// faceapi.draw.drawDetections(canvas, resizedDetections);
 		// faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
 		// faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-		const expressions = detections[0].expressions;
+		var expressions = detections[0].expressions;
+		
 		// console.log(expressions);
 		const landmarkPositions = detections[0].landmarks._positions;
 		var leftEye = [];
 		var rightEye = [];
 		var closedLeft = false;
 		var closedRight = false;
-		for(let i = 37;i <= 42; i++){
-			leftEye.push(landmarkPositions[i]);
-		}
+
 		
-		let leftEyeY = 0;
-		let leftStarterY = leftEye[0]._y * 6;
+		// for(let i = 38;i <= 42; i++){
+		// 	if(i == 40){
+		// 		continue;
+		// 	}
+		// 	leftEye.push(landmarkPositions[i]._x);
+		// }
+		// console.log(leftEye);
 		
-		for(let i = 0;i < leftEye.length; i++){
-			leftEyeY += leftEye[i]._y;
-		}
-		leftEyeY /= leftStarterY; 
+		// let leftEyeY = 0;
+		// let leftStarterY = leftEye[0]._y * 4;
+		
+		// for(let i = 0;i < leftEye.length; i++){
+		// 	leftEyeY += leftEye[i]._y;
+		// }
+		// leftEyeY /= leftStarterY; 
 		// console.log(leftEyeY);
 		
-		if(leftEyeY < 1.04){
-			closedLeft = true;
-			console.log('left_closed');
-		}
+		// if(leftEyeY < 1.017){
+		// 	closedLeft = true;
+		// 	morseString+=".";
+		// 	console.log('.');
+		// }
 		
 		////////////////////////////////////////////////
-		for(let i = 43;i <= 48; i++){
-			rightEye.push(landmarkPositions[i]);
-		}
+		// for(let i = 44;i <= 48; i++){
+		// 	if(i == 46){
+		// 		continue;
+		// 	}
+		// 	rightEye.push(landmarkPositions[i]);
+		// }
 		
-		let rightEyeY = 0;
-		let rightStarterY = rightEye[0]._y * 6;
+		// let rightEyeY = 0;
+		// let rightStarterY = rightEye[0]._y * 4;
 
-		for(let i = 0;i < rightEye.length; i++){
-			rightEyeY += rightEye[i]._y;
-		}
-		rightEyeY /= rightStarterY; 
+		// for(let i = 0;i < rightEye.length; i++){
+		// 	rightEyeY += rightEye[i]._y;
+		// }
+		// rightEyeY /= rightStarterY; 
 		// console.log(rightEyeY);
-		if(rightEyeY < 1.15){
-			closedRight = true;
-			console.log('right closed');
-		}
 		
-		// console.log(leftEyeY, rightEyeY);
-
-		// if(closedRight == true){
-		// 	// window.location.href = 'About.html';
-		// 	console.log('uzmerkei');
-		// }
-
-		// if(closedLeft == true){
-		// 	window.location.href = 'Contact.html';
+		// if(rightEyeY < 1.15){
+		// 	closedRight = true;
+		// 	morseString+="-";
+		// 	console.log('-');
 
 		// }
-
-		// angry: 0.0000011151292937938706
-		// disgusted:
-		// 1.0118585969109972
-		// e-8
-		// fearful:
-		// 3.967896944345739
-		// e-8
-		// happy: 0.0000020260943074390525
-		// neutral: 0.000022489386537927203
-		// sad: 0.9999743700027466
-		// surprised:
-		// 3.897886458048561
-
-
 		
-
 		Object.entries(expressions).forEach(([key, value]) => {
-			if(key==='happy'){
+			if(key==='happy' && value > 0.7){
 				matuoklis.value = parseInt(value*100);
+				console.log('.');
+				morseString+=".";
+
 			}
-			if(key==='happy' && value > 0.9){
-				console.log('Youre happy!');
-				happiness++;
-			}
-			if(happiness>=10){
-				auth = true;
+			else if(key ==='surprised' && value > 0.9){
+				morseString+=" ";
+				console.log('space');
+				
 			}
 
-			if(auth){
-				window.location.href = 'newPage.html';
+			else if(key ==='angry' && value > 0.7){
+				morseString+="-";
+				console.log('-');
+				
 			}
-			});
+			else if(key ==='sad' && value > 0.3){
 			
+				console.log(decodeMorse(morseString));
+				
+			}
 		
-	}, 100)
+
+		
+
+
+			// 	window.location.href = 'newPage.html';
+
+			});
+		
+			
+			
+	}, 1000)
 });
