@@ -33806,3 +33806,8 @@ progress[value]::-webkit-progress-bar {
   display: none;
   visbility: 'hidden';
 }
+
+#settings{
+  display: none;
+  visbility: 'hidden';
+}

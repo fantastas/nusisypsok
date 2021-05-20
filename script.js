@@ -18,6 +18,35 @@ function changeDiv(id){
 	div.style.display = 'flex';
 }
 
+function setCookie(cname, cvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	var expires = "expires="+ d.toUTCString();
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+
+  function getEmail(){
+	email = document.getElementById('email').value;
+	setCookie('email',email, 30);
+	console.log(document.cookie);
+  }
+
+  function getCookie(cname) {
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i = 0; i < ca.length; i++) {
+	  var c = ca[i];
+	  while (c.charAt(0) == ' ') {
+		c = c.substring(1);
+	  }
+	  if (c.indexOf(name) == 0) {
+		return c.substring(name.length, c.length);
+	  }
+	}
+	return "";
+  }
+
 
 
 
@@ -27,7 +56,7 @@ function sendEmail(morseString) {
 		Host: "smtp.gmail.com",
 		Username: "mariussurvilapastas@gmail.com",
 		Password: "Troleibusas123",
-		To: 'msgitara@gmail.com',
+		To: getCookie('email'),
 		From: "mariussurvilapastas@gmail.com",
 		Subject: "Disabled help call",
 		Body: "man reikalinga pagalba",
@@ -156,4 +185,8 @@ window.addEventListener("load", function(){
 
 	
 	});
+
+
+
+
 
