@@ -50,9 +50,16 @@
 }
 
 .grid{
+    grid-auto-flow: column;
     display: grid;
 }
 
 .grid-50{
     width: 50%;
+    padding: 0 2rem;
+}
+
+#video{
+    display: none;
+    visibility: hidden;
 }
