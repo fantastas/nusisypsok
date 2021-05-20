@@ -1,3 +1,26 @@
+// function changeColor(){
+//     document.body.style.backgroundColor = 'cyan';}
+matuoklis = document.getElementById('matuoklis');
+morzesKodas = document.getElementById('morzesKodas');
+space = document.getElementById('space');
+
+
+
+
+
+function showImage(id) {
+    var img = document.getElementById(id);
+    img.style.visibility = 'visible';
+    img.style.display = 'block';
+    setInterval(function(){ 
+        img.style.visibility = 'hidden';
+         img.style.display = 'none';
+     }, 1000);
+
+
+    
+}
+
 video = document.getElementById('video');
 var morseString = "";
 
@@ -55,6 +78,7 @@ Promise.all([
 	faceapi.nets.faceExpressionNet.loadFromUri('/models')]).then(startVideo);
 
 function startVideo(){
+    
 	navigator.getUserMedia(
 	{video: {} },
 	stream => video.srcObject = stream,
@@ -63,8 +87,8 @@ function startVideo(){
 let i = 0;
 let happiness = 0;
 video.addEventListener('play', () => {
+    
 	const canvas = faceapi.createCanvasFromMedia(video)
-	// document.body.append(canvas);
 	const displaySize = {width: video.width, height: video.height}
 	faceapi.matchDimensions(canvas, displaySize);
 	setInterval(async () => {
@@ -78,49 +102,45 @@ video.addEventListener('play', () => {
 		// faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 		var expressions = detections[0].expressions;
 		
-		// console.log(expressions);
 		const landmarkPositions = detections[0].landmarks._positions;
-		var leftEye = [];
-		var rightEye = [];
-		var closedLeft = false;
-		var closedRight = false;
+	
 
 		
 	
 		
 		Object.entries(expressions).forEach(([key, value]) => {
-			if(key==='happy' && value > 0.7){
-				console.log('.');
-				morseString+=".";
+               
+                if(key==='happy' && value > 0.7){
+                    showImage('dot');
+                    morseString+=".";
+                    morzesKodas.value = morseString;
 
-			}
-			else if(key ==='surprised' && value > 0.9){
-				morseString+=" ";
-				console.log('space');
-				
-			}
+                }
+                else if(key ==='surprised' && value > 0.9){
+                    morseString+=" ";
+                    showImage('space');
+                    matuoklis.value = decodeMorse(morseString);
+                    morzesKodas.value = morseString;
 
-			else if(key ==='angry' && value > 0.7){
-				morseString+="-";
-				console.log('-');
-				
-			}
-			else if(key ==='sad' && value > 0.3){
-			
-				// console.log(decodeMorse(morseString));
-				buttonclick();
-				
-			}
+
+                    
+                }
+
+                else if(key ==='angry' && value > 0.6){
+                    showImage('bruksnys');
+                    morseString+="-";
+                    console.log('-');
+                    morzesKodas.value = morseString;
+
+
+                }
+                else if(key ==='sad' && value > 0.3){
+                    buttonclick();
+                }
+		    });
 		
+            space.visibility = 'hidden';
 
-		
-
-
-			// 	window.location.href = 'newPage.html';
-
-			});
-		
-			
 			
 	}, 1000)
 });

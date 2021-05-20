@@ -107,7 +107,7 @@ video.addEventListener('play', () => {
 		// }
 		
 		Object.entries(expressions).forEach(([key, value]) => {
-			if(key==='happy' && value > 0.7){
+			if(key==='happy' && value > 0.9){
 				buttonclick();
 				return;
 			}

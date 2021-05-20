@@ -1,4 +1,37 @@
 #selfclick{
     visibility: hidden;
     display: none;
-  }
+}
+
+#matuoklis{
+    background-color: aliceblue;
+    min-width: 5rem;
+    width: 100%;
+    height: 40%;
+    min-height: 5rem;
+    margin: auto;
+    font-size: 4rem;
+}
+
+#morzesKodas{
+    background-color: aliceblue;
+    min-width: 5rem;
+    min-height: 5rem;
+    margin: auto;
+    font-size: 4rem;
+    width: 100%;
+    height: 40%;
+}
+
+#space{
+    visibility: hidden;
+    display: none;
+}
+#dot{
+    visibility: hidden;
+    display: none;
+}
+#bruksnys{
+    visibility: hidden;
+    display: none;
+}
