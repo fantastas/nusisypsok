@@ -134,7 +134,7 @@ video.addEventListener('play', () => {
 
 
                 }
-                else if(key ==='sad' && value > 0.3){
+                else if(key ==='sad' && value > 0.5){
                     buttonclick();
                 }
 		    });
