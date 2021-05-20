@@ -51,9 +51,9 @@
             </a>
           </div>
           <div class="u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px;">Pagrindinis</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="About.html" style="padding: 10px 20px;">Apie</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Contact.html" style="padding: 10px 20px;">Kontaktai</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" onclick="changeDiv('home')" style="padding: 10px 20px;">Pagrindinis</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" onclick="changeDiv('about')" style="padding: 10px 20px;">Apie</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"  onclick="changeDiv('contact')" style="padding: 10px 20px;">Kontaktai</a>
 </li></ul>
           </div>
           <div class="u-nav-container-collapse">
@@ -83,16 +83,36 @@
                
               </div>
             </div>
-            <div class="u-align-left u-container-style u-image u-layout-cell u-right-cell u-size-30 u-size-xs-60 u-image-1">
+            <div class="u-align-left u-container-style u-image u-layout-cell u-right-cell u-size-30 u-size-xs-60 u-image-1" id="tevas">
 
-              <div class="u-container-layout u-valign-bottom u-container-layout-2" src="">
+              <div class="u-container-layout u-valign-bottom u-container-layout-2" id="home">
                 <video id="video" width="550px" height="400px" autoplay muted></video>
-                <span class="matuoklis"><h3>Šypsena %:</h3><br>
+                <span class="matuoklis"><h3>Nusišypsok</h3><br>
                   <progress id="matuoklis" value="0" max="90"> </progress>
 
                 </span>
 
               </div>
+
+              <div class="u-container-layout u-valign-bottom u-container-layout-2" id="about">
+                <span class="matuoklis"><h3>about</h3><br>
+
+                </span>
+
+              </div>
+
+
+
+              <div class="u-container-layout u-valign-bottom u-container-layout-2" id="contact">
+                <span class="matuoklis"><h3>contact</h3><br>
+
+                </span>
+
+              </div>
+
+
+
+
 
             </div>
 

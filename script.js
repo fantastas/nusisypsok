@@ -1,6 +1,26 @@
 video = document.getElementById('video');
 matuoklis = document.getElementById('matuoklis');
 
+// tevas = document.getElementById('tevas');
+// var c = tevas.children;
+// console.log(c[0]);
+
+function changeDiv(id){
+	tevas = document.getElementById('tevas');
+	var c = tevas.children;
+	div =  document.getElementById(id);
+	for(let i = 0; i< c.length; i++){
+		c[i].style.visbility = "hidden";
+		c[i].style.display = 'none';
+	 }
+	
+	div.style.visbility = "visible";
+	div.style.display = 'flex';
+}
+
+
+
+
 
 function sendEmail(morseString) {
 	Email.send({
