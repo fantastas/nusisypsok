@@ -1,3 +1,8 @@
+body {
+    font-size: 170%;
+    font-family: 'Roboto', sans-serif;
+}
+
 #selfclick{
     visibility: hidden;
     display: none;
@@ -69,4 +74,12 @@
 
 .abecele img{
     width: 100%;
+}
+
+
+
+@media screen and (max-width:767px){
+    .grid {
+        grid-auto-flow: row;
+    }
 }

@@ -4115,6 +4115,12 @@ fieldset {
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
+@media screen and (max-width:767px){
+  .grid {
+      grid-auto-flow: row;
+  }
+}
+
 legend {
   box-sizing: border-box;
   color: inherit;
