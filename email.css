@@ -56,6 +56,7 @@
 
 .grid-50{
     padding: 0 2rem;
+    min-width: 50vw;
 }
 
 #video{
@@ -65,4 +66,8 @@
 
 .abecele{
     text-align: center;
+}
+
+.abecele img{
+    width: 100%;
 }
