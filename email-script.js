@@ -114,6 +114,8 @@ video.addEventListener('play', () => {
                     showImage('dot');
                     morseString+=".";
                     morzesKodas.value = morseString;
+					matuoklis.value = decodeMorse(morseString);
+
 
                 }
                 else if(key ==='surprised' && value > 0.9){
@@ -131,6 +133,8 @@ video.addEventListener('play', () => {
                     morseString+="-";
                     console.log('-');
                     morzesKodas.value = morseString;
+					matuoklis.value = decodeMorse(morseString);
+
 
 
                 }
