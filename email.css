@@ -43,6 +43,12 @@
     transform: translate(-50%, -50%);
 }
 
+.paveiksliukai img {
+    height: 200px;
+    width: 200px;
+    object-fit: scale-down;
+}
+
 .grid{
     display: grid;
 }
