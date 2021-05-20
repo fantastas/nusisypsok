@@ -1,6 +1,7 @@
 video = document.getElementById('video');
 matuoklis = document.getElementById('matuoklis');
 
+
 function sendEmail(morseString) {
 	Email.send({
 		Host: "smtp.gmail.com",
@@ -36,10 +37,10 @@ function startVideo(){
 let i = 0;
 let happiness = 0;
 video.addEventListener('play', () => {
-	const canvas = faceapi.createCanvasFromMedia(video)
+	// const canvas = faceapi.createCanvasFromMedia(video)
 	// document.body.append(canvas);
-	const displaySize = {width: video.width, height: video.height}
-	faceapi.matchDimensions(canvas, displaySize);
+	// const displaySize = {width: video.width, height: video.height}
+	// faceapi.matchDimensions(canvas, displaySize);
 	setInterval(async () => {
 		const detections = await faceapi.detectAllFaces(video, 
 		new faceapi.TinyFaceDetectorOptions()).
@@ -107,6 +108,9 @@ video.addEventListener('play', () => {
 		// }
 		
 		Object.entries(expressions).forEach(([key, value]) => {
+			if(key==='happy'){
+				matuoklis.value = parseInt(value*100);
+			}
 			if(key==='happy' && value > 0.9){
 				buttonclick();
 				return;
@@ -123,3 +127,13 @@ video.addEventListener('play', () => {
 			
 	}, 1000)
 });
+
+
+window.addEventListener("load", function(){
+	setTimeout(function(){ 	
+		overlay = document.getElementById('overlay');
+		overlay.style.display = "none"; }, 3000);
+
+	
+	});
+
