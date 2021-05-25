@@ -57,6 +57,15 @@ body {
 .smileys{
     height: 100px;
     width: 100px;
+    padding-left: 3rem;
+}
+.grid-50.naudojimosi li {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 20vw;
+    justify-content: flex-end;
+    padding: 20px 0 0;
 }
 
 .grid{
