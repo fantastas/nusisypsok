@@ -64,6 +64,11 @@ body {
     transform: translate(-50%, -50%);
 }
 
+h3 {
+    mix-blend-mode: difference;
+    color: white;
+}
+
 .paveiksliukai img {
     height: 200px;
     width: 200px;
@@ -107,6 +112,14 @@ img.smileys {
     min-width: 45vw;
     display: grid;
     place-items: center;
+    padding-bottom: 60px;
+}
+
+.grid-50.abc {
+    background: white;
+}
+body {
+    background: var(--tamsi);
 }
 
 #video{
