@@ -63,7 +63,6 @@ body {
     display: flex;
     align-items: center;
     margin: auto;
-    width: 20vw;
     justify-content: flex-end;
     padding: 20px 0 0;
 }
@@ -101,7 +100,7 @@ img.smileys {
 
 
 
-@media screen and (max-width:767px){
+@media screen and (max-width:981px){
     .grid {
         grid-auto-flow: row;
     }
