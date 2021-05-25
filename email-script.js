@@ -135,11 +135,15 @@ video.addEventListener('play', () => {
 				else if(key ==='sad' && value > 0.9){
                     buttonclick();
                 }
-				// else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
-				// 	var index = morseString.lastIndexOf(" ");
-				// 	console.log(index);
-				// 	morseString = morseString.substr(0, index-1);
-				// }
+					else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
+					var index = morseString.split(" ");
+					console.log(index);
+					index = index.slice(index.length-2, 2);
+					morseString = index.join(" ");
+					// morseString = morseString.substr(0, index-1);
+				}
+				// . .. .--. ..-
+				// . .. .--. ..-
 		    });
 		}, 1000)
 });
