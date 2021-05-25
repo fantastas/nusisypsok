@@ -135,7 +135,7 @@ video.addEventListener('play', () => {
 					
 
 				}
-				else if(key ==='sad' && value > 0.6){
+				else if(key ==='sad' && value > 0.8){
 					showImage('backspace');
 					
 					var index = morseString.split(" ");
