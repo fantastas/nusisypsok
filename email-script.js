@@ -147,6 +147,7 @@ video.addEventListener('play', () => {
                 }
 				
 				else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
+						morseString.substr(0,morseString.length -1);
 						showImage('letter');
 						buttonclick();
 
