@@ -40,6 +40,15 @@ body {
     visibility: hidden;
     display: none;
 }
+#letter{
+    visibility: hidden;
+    display: none;
+}
+
+#backspace{
+    visibility: hidden;
+    display: none;
+}
 
 .paveiksliukai{
     position: fixed;

@@ -4,6 +4,8 @@ space = document.getElementById('space');
 dot = document.getElementById('dot');
 bruksnys = document.getElementById('bruksnys');
 video = document.getElementById('video');
+backspace = document.getElementById('backspace');
+letter = document.getElementById('letter');
 var morseString = "";
 var MORSE_CODE = {".-": "a", "-...":"b", "-.-.": "c", "-..": "d", ".":"e", "..-.":"f", "--.":"g", "....":"h", 
 "..":"i", ".---":"j", "-.-":"k", ".-..":"l", "--":"m", "-.":"n", "---":"o", ".--.":"p", "--.-":"q", ".-.":"r", 
@@ -79,7 +81,6 @@ function sendEmail(morseString) {
 	function buttonclick(){
 		var pagebutton= document.getElementById("selfclick");
 		pagebutton.click();
-		window.location.href = 'home.html';
 
 	}
 
@@ -105,6 +106,8 @@ video.addEventListener('play', () => {
 		dot.style.visibility = 'hidden';
 		bruksnys.style.visibility = 'hidden';
 		space.style.visibility = 'hidden';
+		backspace.style.visibility = 'hidden';
+		letter.style.visibility = 'hidden';
 
 		
 		Object.entries(expressions).forEach(([key, value]) => {
@@ -132,18 +135,23 @@ video.addEventListener('play', () => {
 					
 
 				}
-				else if(key ==='sad' && value > 0.9){
-                    buttonclick();
-                }
-					else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
+				else if(key ==='sad' && value > 0.5){
+					showImage('backspace');
+					
 					var index = morseString.split(" ");
+					
+					index = index.slice(0, index.length-1);
 					console.log(index);
-					index = index.slice(index.length-2, 2);
+
 					morseString = index.join(" ");
-					// morseString = morseString.substr(0, index-1);
+                }
+				
+				else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
+						showImage('letter');
+						buttonclick();
+
 				}
-				// . .. .--. ..-
-				// . .. .--. ..-
+		
 		    });
 		}, 1000)
 });
