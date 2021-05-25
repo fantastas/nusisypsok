@@ -17,10 +17,7 @@ function showImage(id) {
     var img = document.getElementById(id);
     img.style.visibility = 'visible';
     img.style.display = 'block';
-    // setInterval( function() { 
-    //     img.style.visibility = 'hidden';
-    //     img.style.display = 'none';
-    //  }, 1000);
+   
 }
 
 var decodeMorse = function(morseCode){
@@ -98,7 +95,7 @@ function startVideo(){
 	err => console.error('unable to start video'))
 }
 let i = 0;
-let happiness = 0;
+
 video.addEventListener('play', () => {
    
 	setInterval(async () => {
@@ -156,5 +153,5 @@ video.addEventListener('play', () => {
 				}
 		
 		    });
-		}, 1000)
+		}, 2000)
 });
