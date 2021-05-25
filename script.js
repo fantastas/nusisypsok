@@ -28,7 +28,9 @@ function setCookie(cname, cvalue, exdays) {
 
   function getEmail(){
 	email = document.getElementById('email').value;
+	message =  document.getElementById('message').value;
 	setCookie('email',email, 30);
+	setCookie('message', message, 30);
 	console.log(document.cookie);
   }
 
@@ -47,6 +49,7 @@ function setCookie(cname, cvalue, exdays) {
 	return "";
   }
 
+  console.log(getCookie('message'));
 
 
 
@@ -59,7 +62,7 @@ function sendEmail(morseString) {
 		To: getCookie('email'),
 		From: "mariussurvilapastas@gmail.com",
 		Subject: "Disabled help call",
-		Body: "man reikalinga pagalba",
+		Body: getCookie('message'),
 	})
 		.then(function (message) {
 		alert("mail sent successfully")

@@ -47,12 +47,35 @@ var decodeMorse = function(morseCode){
   return decoded.map(arr => arr.join('')).join(' ');
 }
 
+function getEmail(){
+	email = document.getElementById('email').value;
+	message =  document.getElementById('message').value;
+	setCookie('email',email, 30);
+	setCookie('message', message, 30);
+	console.log(document.cookie);
+  }
+
+  function getCookie(cname) {
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i = 0; i < ca.length; i++) {
+	  var c = ca[i];
+	  while (c.charAt(0) == ' ') {
+		c = c.substring(1);
+	  }
+	  if (c.indexOf(name) == 0) {
+		return c.substring(name.length, c.length);
+	  }
+	}
+	return "";
+  }
+
 function sendEmail(morseString) {
 	Email.send({
 		Host: "smtp.gmail.com",
 		Username: "mariussurvilapastas@gmail.com",
 		Password: "Troleibusas123",
-		To: 'msgitara@gmail.com',
+		To: getCookie('email'),
 		From: "mariussurvilapastas@gmail.com",
 		Subject: "Disabled help call",
 		Body: decodeMorse(this.morseString),
@@ -73,8 +96,8 @@ function sendEmail(morseString) {
 var auth = false;
 Promise.all([
 	faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-	faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-	faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
+	// faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
+	// faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
 	faceapi.nets.faceExpressionNet.loadFromUri('/models')]).then(startVideo);
 
 function startVideo(){
@@ -88,13 +111,12 @@ let i = 0;
 let happiness = 0;
 video.addEventListener('play', () => {
     
-	const canvas = faceapi.createCanvasFromMedia(video)
-	const displaySize = {width: video.width, height: video.height}
-	faceapi.matchDimensions(canvas, displaySize);
+	// const canvas = faceapi.createCanvasFromMedia(video)
+	// const displaySize = {width: video.width, height: video.height}
+	// faceapi.matchDimensions(canvas, displaySize);
 	setInterval(async () => {
 		const detections = await faceapi.detectAllFaces(video, 
-		new faceapi.TinyFaceDetectorOptions()).
-		withFaceLandmarks().withFaceExpressions()
+		new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
 		// const resizedDetections = faceapi.resizeResults(detections, displaySize);
 		// canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
 		// faceapi.draw.drawDetections(canvas, resizedDetections);
@@ -102,7 +124,7 @@ video.addEventListener('play', () => {
 		// faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 		var expressions = detections[0].expressions;
 		
-		const landmarkPositions = detections[0].landmarks._positions;
+		// const landmarkPositions = detections[0].landmarks._positions;
 	
 
 		
@@ -121,30 +143,33 @@ video.addEventListener('play', () => {
                 else if(key ==='surprised' && value > 0.9){
                     morseString+=" ";
                     showImage('space');
-                    matuoklis.value = decodeMorse(morseString);
-                    morzesKodas.value = morseString;
-
-
-                    
-                }
-
-                else if(key ==='angry' && value > 0.6){
+                 	morzesKodas.value = morseString;
+					matuoklis.value = decodeMorse(morseString);
+				}
+				else if(key ==='angry' && value > 0.6){
                     showImage('bruksnys');
                     morseString+="-";
-                    console.log('-');
                     morzesKodas.value = morseString;
 					matuoklis.value = decodeMorse(morseString);
-
-
-
+				}
+				else if(key ==='sad' && value > 0.9){
+                    // buttonclick();
+					// console.log('send');
                 }
-                else if(key ==='sad' && value > 0.5){
-                    buttonclick();
-                }
-		    });
+				else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
+					var index = morseString.lastIndexOf(" ");
+					console.log(index);
+					morseString = morseString.substr(0, index-1);
+					console.log("trink");
+				}
+		    }
+
+			
+			
+			);
 		
-            space.visibility = 'hidden';
 
+				
 			
 	}, 1000)
 });

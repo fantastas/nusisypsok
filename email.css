@@ -54,6 +54,11 @@ body {
     object-fit: scale-down;
 }
 
+.smileys{
+    height: 100px;
+    width: 100px;
+}
+
 .grid{
     grid-auto-flow: column;
     display: grid;

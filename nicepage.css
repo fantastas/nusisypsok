@@ -16669,6 +16669,7 @@ h2 {
   font-size: 1.5rem;
 }
 h3 {
+  color: white;
   font-size: 1.25rem;
 }
 h4 {
@@ -16681,9 +16682,10 @@ h6 {
   font-size: 1.125rem;
 }
 p {
-  margin-top: 0;
+  margin: 1rem;
   padding: 0;
-  margin-bottom: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
 }
 .u-uppercase {
   text-transform: uppercase;
