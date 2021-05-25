@@ -2,6 +2,13 @@ body {
     font-size: 170%;
     font-family: 'Roboto', sans-serif;
 }
+:root {
+    --tamsi: #333333;
+    --geltona: #eff554;
+    --zalia: #44ef98;
+    --rozine: #ee4469;
+    --melyna: #12478f;
+} 
 
 #selfclick{
     visibility: hidden;
@@ -61,12 +68,17 @@ body {
     height: 200px;
     width: 200px;
     object-fit: scale-down;
+    background-color: #44ef98;
 }
 
 .smileys{
     height: 50px;
     width: 50px;
     margin: 10px;
+}
+img.smileys {
+    background-color: #44ef98;
+
 }
 .grid-50.naudojimosi li {
     display: flex;
@@ -85,6 +97,9 @@ img.smileys {
 .naudojimos li {
     list-style: none;
     display: flex;
+}
+.naudojimosi{
+    background-color: var(--melyna);
 }
 
 .grid-50{
@@ -106,10 +121,16 @@ img.smileys {
     width: 100%;
 }
 
-
+.morse{
+    background-color: var(--rozine);
+}
+.decoded{
+    background-color: var(--geltona);
+}
 
 @media screen and (max-width:981px){
     .grid {
         grid-auto-flow: row;
     }
 }
+
