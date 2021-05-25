@@ -33728,7 +33728,6 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 .u-footer .u-text-1 {
-  width: 417px;
   margin: 49px auto;
 }
 @media (max-width: 1199px) {
@@ -33752,13 +33751,13 @@ a.u-link.u-text-hover-grey-90:hover {
   }
 
   .u-footer .u-text-1 {
-    width: 100vw;
   }
 }
 
 video .u-footer .u-text-1 ,
 #video {
     max-width: 100vw;
+    width: 100%;
 }
 
  /*begin-variables base-font-size*/ 
