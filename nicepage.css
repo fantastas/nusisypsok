@@ -19608,7 +19608,7 @@ h6 {
 }
 .u-body {
   color: #111111;
-  background-color: #ffffff;
+  background-color: #333333;
 }
 /*end-variables color*/
 /*begin-variables font*/
@@ -33797,6 +33797,10 @@ progress[value]::-webkit-progress-bar {
   align-content: center;
   justify-items: center;
 
+}
+
+#overlay img{
+ width: 100%;
 }
 
 #contact{
