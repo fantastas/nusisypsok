@@ -81,6 +81,8 @@ function sendEmail(morseString) {
 	function buttonclick(){
 		var pagebutton= document.getElementById("selfclick");
 		pagebutton.click();
+		window.location.href = 'home.html';
+
 
 	}
 
@@ -113,6 +115,7 @@ video.addEventListener('play', () => {
 		Object.entries(expressions).forEach(([key, value]) => {
                
                 if(key==='happy' && value > 0.7){
+					console.log('ragas');
                     showImage('dot');
                     morseString+=".";
                     morzesKodas.value = morseString;
