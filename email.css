@@ -2,13 +2,14 @@ body {
     font-size: 170%;
     font-family: 'Roboto', sans-serif;
 }
-:root {
+
+/* :root {
     --tamsi: #333333;
     --geltona: #eff554;
     --zalia: #44ef98;
     --rozine: #ee4469;
     --melyna: #12478f;
-} 
+}  */
 
 #selfclick{
     visibility: hidden;
@@ -62,36 +63,22 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    
+}
+img.smileys{
+    background-color: red;
 }
 
-
-
 .paveiksliukai img {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     height: 200px;
     width: 200px;
     object-fit: scale-down;
-    background-color: #44ef98;
-    position: absolute;
-}
-
-.grid-50.decoded h3,
-.grid-50.morse h3,
-.grid-50.naudojimosi h3 {
-    color: lightblue;
 }
 
 .smileys{
     height: 50px;
     width: 50px;
     margin: 10px;
-}
-img.smileys {
-    background-color: #44ef98;
-
 }
 .grid-50.naudojimosi li {
     display: flex;
@@ -103,15 +90,6 @@ img.smileys {
     object-fit: scale-down;
 }
 
-@media screen and (min-width:905px){
-    .grid-50.abc h3 {
-        position: absolute;
-        top: 0px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    }
-
 .grid{
     grid-auto-flow: column;
     display: grid;
@@ -120,24 +98,12 @@ img.smileys {
     list-style: none;
     display: flex;
 }
-.naudojimosi{
-    background-color: var(--melyna);
-}
 
 .grid-50{
     padding: 0 2rem;
     min-width: 45vw;
     display: grid;
     place-items: center;
-    padding-bottom: 60px;
-    position: relative;
-}
-
-.grid-50.abc {
-    background: white;
-}
-body {
-    background: var(--tamsi);
 }
 
 #video{
@@ -152,16 +118,10 @@ body {
     width: 100%;
 }
 
-.morse{
-    background-color: var(--rozine);
-}
-.decoded{
-    background-color: var(--zalia);
-}
+
 
 @media screen and (max-width:981px){
     .grid {
         grid-auto-flow: row;
     }
 }
-

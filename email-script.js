@@ -101,7 +101,7 @@ video.addEventListener('play', () => {
    
 	setInterval(async () => {
 		const detections = await faceapi.detectAllFaces(video, 
-		new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
+		new faceapi.TinyFaceDetectorOptions()).withFaceExpressions();
 		var expressions = detections[0].expressions;
 		dot.style.visibility = 'hidden';
 		bruksnys.style.visibility = 'hidden';
@@ -112,8 +112,9 @@ video.addEventListener('play', () => {
 		
 		Object.entries(expressions).forEach(([key, value]) => {
                
-                if(key==='happy' && value > 0.7){
+                if(key==='happy' && value > 0.9){
                     showImage('dot');
+					console.log('happy');
                     morseString+=".";
                     morzesKodas.value = morseString;
 					matuoklis.value = decodeMorse(morseString);
