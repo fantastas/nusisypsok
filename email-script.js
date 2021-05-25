@@ -15,7 +15,7 @@ function showImage(id) {
     setInterval(function(){ 
         img.style.visibility = 'hidden';
          img.style.display = 'none';
-     }, 1000);
+     }, 1500);
 
 
     
@@ -153,8 +153,7 @@ video.addEventListener('play', () => {
 					matuoklis.value = decodeMorse(morseString);
 				}
 				else if(key ==='sad' && value > 0.9){
-                    // buttonclick();
-					// console.log('send');
+                    buttonclick();
                 }
 				else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
 					var index = morseString.lastIndexOf(" ");
