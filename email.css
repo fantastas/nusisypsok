@@ -57,7 +57,7 @@ body {
 .smileys{
     height: 100px;
     width: 100px;
-    padding-left: 3rem;
+    margin: 10px;
 }
 .grid-50.naudojimosi li {
     display: flex;
@@ -67,10 +67,17 @@ body {
     justify-content: flex-end;
     padding: 20px 0 0;
 }
+img.smileys {
+    object-fit: scale-down;
+}
 
 .grid{
     grid-auto-flow: column;
     display: grid;
+}
+.naudojimos li {
+    list-style: none;
+    display: flex;
 }
 
 .grid-50{

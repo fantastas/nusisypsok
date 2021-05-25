@@ -1,34 +1,25 @@
-// function changeColor(){
-//     document.body.style.backgroundColor = 'cyan';}
 matuoklis = document.getElementById('matuoklis');
 morzesKodas = document.getElementById('morzesKodas');
 space = document.getElementById('space');
-
-
-
+dot = document.getElementById('dot');
+bruksnys = document.getElementById('bruksnys');
+video = document.getElementById('video');
+var morseString = "";
+var MORSE_CODE = {".-": "a", "-...":"b", "-.-.": "c", "-..": "d", ".":"e", "..-.":"f", "--.":"g", "....":"h", 
+"..":"i", ".---":"j", "-.-":"k", ".-..":"l", "--":"m", "-.":"n", "---":"o", ".--.":"p", "--.-":"q", ".-.":"r", 
+"...":"s", "-":"t", "..-":"u", "...-":"v", ".--":"w", "-..-":"x", "-.--":"y", "--..":"z", ".----":"1", "..---":"2", 
+"...--":"3", "....-":"4", ".....":"5", "-....":"6", "--...":"7", "---..":"8", "----.":"9", "-----":"0", "|":" "};
 
 
 function showImage(id) {
     var img = document.getElementById(id);
     img.style.visibility = 'visible';
     img.style.display = 'block';
-    setInterval(function(){ 
-        img.style.visibility = 'hidden';
-         img.style.display = 'none';
-     }, 1500);
-
-
-    
+    // setInterval( function() { 
+    //     img.style.visibility = 'hidden';
+    //     img.style.display = 'none';
+    //  }, 1000);
 }
-
-video = document.getElementById('video');
-var morseString = "";
-
-
-var MORSE_CODE = {".-": "a", "-...":"b", "-.-.": "c", "-..": "d", ".":"e", "..-.":"f", "--.":"g", "....":"h", 
-"..":"i", ".---":"j", "-.-":"k", ".-..":"l", "--":"m", "-.":"n", "---":"o", ".--.":"p", "--.-":"q", ".-.":"r", 
-"...":"s", "-":"t", "..-":"u", "...-":"v", ".--":"w", "-..-":"x", "-.--":"y", "--..":"z", ".----":"1", "..---":"2", 
-"...--":"3", "....-":"4", ".....":"5", "-....":"6", "--...":"7", "---..":"8", "----.":"9", "-----":"0", "|":" "};
 
 var decodeMorse = function(morseCode){
   var words = (morseCode).split('  ');
@@ -88,16 +79,12 @@ function sendEmail(morseString) {
 	function buttonclick(){
 		var pagebutton= document.getElementById("selfclick");
 		pagebutton.click();
+		window.location.href = 'home.html';
+
 	}
 
-	
-
-
-var auth = false;
 Promise.all([
 	faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-	// faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-	// faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
 	faceapi.nets.faceExpressionNet.loadFromUri('/models')]).then(startVideo);
 
 function startVideo(){
@@ -105,30 +92,20 @@ function startVideo(){
 	navigator.getUserMedia(
 	{video: {} },
 	stream => video.srcObject = stream,
-	err => console.error(err))
+	err => console.error('unable to start video'))
 }
 let i = 0;
 let happiness = 0;
 video.addEventListener('play', () => {
-    
-	// const canvas = faceapi.createCanvasFromMedia(video)
-	// const displaySize = {width: video.width, height: video.height}
-	// faceapi.matchDimensions(canvas, displaySize);
+   
 	setInterval(async () => {
 		const detections = await faceapi.detectAllFaces(video, 
 		new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
-		// const resizedDetections = faceapi.resizeResults(detections, displaySize);
-		// canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
-		// faceapi.draw.drawDetections(canvas, resizedDetections);
-		// faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-		// faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 		var expressions = detections[0].expressions;
-		
-		// const landmarkPositions = detections[0].landmarks._positions;
-	
+		dot.style.visibility = 'hidden';
+		bruksnys.style.visibility = 'hidden';
+		space.style.visibility = 'hidden';
 
-		
-	
 		
 		Object.entries(expressions).forEach(([key, value]) => {
                
@@ -137,38 +114,32 @@ video.addEventListener('play', () => {
                     morseString+=".";
                     morzesKodas.value = morseString;
 					matuoklis.value = decodeMorse(morseString);
-
-
-                }
+					
+				}
                 else if(key ==='surprised' && value > 0.9){
                     morseString+=" ";
                     showImage('space');
                  	morzesKodas.value = morseString;
 					matuoklis.value = decodeMorse(morseString);
+					
+
 				}
 				else if(key ==='angry' && value > 0.6){
                     showImage('bruksnys');
                     morseString+="-";
                     morzesKodas.value = morseString;
 					matuoklis.value = decodeMorse(morseString);
+					
+
 				}
 				else if(key ==='sad' && value > 0.9){
                     buttonclick();
                 }
-				else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
-					var index = morseString.lastIndexOf(" ");
-					console.log(index);
-					morseString = morseString.substr(0, index-1);
-					console.log("trink");
-				}
-		    }
-
-			
-			
-			);
-		
-
-				
-			
-	}, 1000)
+				// else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
+				// 	var index = morseString.lastIndexOf(" ");
+				// 	console.log(index);
+				// 	morseString = morseString.substr(0, index-1);
+				// }
+		    });
+		}, 1000)
 });
