@@ -153,5 +153,5 @@ video.addEventListener('play', () => {
 				}
 		
 		    });
-		}, 2000)
+		}, 1500)
 });
