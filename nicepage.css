@@ -33843,6 +33843,8 @@ body.u-body * ,
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  padding: 10px 10px 14px;
+
 
 
 }
