@@ -76,11 +76,14 @@ textarea {
     transform: translate(-50%, -50%);
 }
 
-.paveiksliukai img {
+paveiksliukai img {
     height: 100px;
     width: 100px;
     object-fit: scale-down;
     background-color: var(--geltona);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .smileys{
@@ -122,18 +125,30 @@ img.smileys {
     visibility: hidden;
 } */
 
+#video {
+    width: 30%!important;
+    height: auto!important;
+}
+
 .abecele{
     text-align: center;
+    max-width: 650px;
+
 }
 
 .abecele img{
     width: 100%;
+    
 }
 
 
 body.u-body * ,
 .u-font-oswald.u-custom-font{
     font-family: 'Roboto'!important;
+}
+.naudojimosi ul {
+    margin: 0;
+    transform: scale(0.8);
 }
 
 @media screen and (max-width:981px){
