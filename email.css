@@ -103,7 +103,7 @@ img.smileys {
 .grid{
     grid-auto-flow: column;
     display: grid;
-    background-color: var(--zalia);
+    background-color: lightblue;
 }
 .naudojimos li {
     list-style: none;
