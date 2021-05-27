@@ -1,6 +1,7 @@
 body {
     font-size: 170%;
     font-family: 'Roboto', sans-serif;
+    background-color: lightblue;
 }
 :root {
     --tamsi: #333333;
@@ -17,7 +18,6 @@ body {
 #stream{
     text-align: center;
     align-items: center;
-    padding-top: 2rem;
 }
 
 #matuoklis{
@@ -76,7 +76,7 @@ textarea {
     transform: translate(-50%, -50%);
 }
 
-paveiksliukai img {
+.paveiksliukai img {
     height: 100px;
     width: 100px;
     object-fit: scale-down;
@@ -94,9 +94,7 @@ paveiksliukai img {
 .grid-50.naudojimosi li {
     display: flex;
     align-items: center;
-    margin: auto;
     justify-content: start;
-    padding: 20px 0 0;
     
 }
 img.smileys {
@@ -133,8 +131,10 @@ img.smileys {
 .abecele{
     text-align: center;
     max-width: 650px;
+    
 
 }
+
 
 .abecele img{
     width: 100%;
@@ -155,4 +155,8 @@ body.u-body * ,
     .grid {
         grid-auto-flow: row;
     }
+    .abecele {
+        max-width:unset; 
+        width: 91vw;
+}
 }
