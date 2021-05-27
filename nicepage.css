@@ -33832,7 +33832,7 @@ body.u-body * ,
   visbility: 'hidden';
 }
 
-box {
+.box {
   display: flex;
   flex-direction: row;
   align-items: center;
