@@ -61,6 +61,8 @@ function getEmail(){
   }
 
 function sendEmail(morseString) {
+	var message = decodeMorse(this.morseString);
+	message = message.substr(0, message.length -1);
 	Email.send({
 		Host: "smtp.gmail.com",
 		Username: "mariussurvilapastas@gmail.com",
@@ -68,7 +70,7 @@ function sendEmail(morseString) {
 		To: getCookie('email'),
 		From: "mariussurvilapastas@gmail.com",
 		Subject: "Disabled help call",
-		Body: decodeMorse(this.morseString),
+		Body: message,
 	})
 		.then(function (message) {
 		alert("mail sent successfully")
@@ -102,6 +104,7 @@ video.addEventListener('play', () => {
 		const detections = await faceapi.detectAllFaces(video, 
 		new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
 		var expressions = detections[0].expressions;
+		
 		dot.style.visibility = 'hidden';
 		bruksnys.style.visibility = 'hidden';
 		space.style.visibility = 'hidden';
@@ -112,7 +115,6 @@ video.addEventListener('play', () => {
 		Object.entries(expressions).forEach(([key, value]) => {
                
                 if(key==='happy' && value > 0.7){
-					console.log('ragas');
                     showImage('dot');
                     morseString+=".";
                     morzesKodas.value = morseString;
