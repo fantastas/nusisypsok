@@ -33808,7 +33808,7 @@ progress[value]::-webkit-progress-bar {
 }
 #overlay img {
     width: 100%;
-    max-width: 80px;
+    max-width: 400px;
 }
 #contact{
   display: none;
