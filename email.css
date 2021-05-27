@@ -18,6 +18,7 @@ body {
     text-align: center;
     align-items: center;
     background-color: var(--rozine);
+    padding: 2rem;
 }
 
 #matuoklis{
