@@ -158,5 +158,10 @@ body.u-body * ,
     .abecele {
         max-width:unset; 
         width: 91vw;
+        
+}   
+.smileys {
+    height: auto;
+    width: 13vw;
 }
 }

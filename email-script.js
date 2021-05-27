@@ -143,9 +143,9 @@ video.addEventListener('play', () => {
 					var index = morseString.split(" ");
 					
 					index = index.slice(0, index.length-1);
-					console.log(index);
-
 					morseString = index.join(" ");
+					matuoklis.value = decodeMorse(morseString);
+					morzesKodas.value = morseString;
                 }
 				
 				else if(matuoklis.value.substr(matuoklis.value.length - 1) == 'w'){
