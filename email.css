@@ -17,7 +17,6 @@ body {
 #stream{
     text-align: center;
     align-items: center;
-    background-color: var(--rozine);
     padding-top: 2rem;
 }
 
