@@ -16414,6 +16414,7 @@ div.u-video,
 }
 .u-nav-container > .u-nav > .u-nav-item > .u-nav-link {
   padding: 10px 20px;
+    cursor: pointer;
 }
 .menu-collapse {
   display: none;
