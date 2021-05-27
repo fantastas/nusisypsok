@@ -92,7 +92,7 @@ textarea {
     display: flex;
     align-items: center;
     margin: auto;
-    justify-content: flex-end;
+    justify-content: start;
     padding: 20px 0 0;
     
 }
