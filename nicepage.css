@@ -33832,6 +33832,12 @@ body.u-body * ,
   visbility: 'hidden';
 }
 
+.u-container-layout.u-valign-middle.u-container-layout-1 > img {
+  width: 60%;
+  display: grid;
+  align-self: center;
+}
+
 .box {
   display: flex;
   flex-direction: row;
