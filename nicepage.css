@@ -16811,6 +16811,7 @@ p {
 .u-text {
   word-wrap: break-word;
   position: relative;
+  margin: 20px 10px;
 }
 .u-word-break {
   word-break: break-all;
@@ -33410,10 +33411,11 @@ a.u-link.u-text-hover-grey-90:hover {
         h1:not(.u-title)
         {
         font-weight: 400;
-        font-size: 3rem;
+        font-size: 2.5rem;
         line-height: 1.1;
         margin-top: 20px;
         margin-bottom: 20px;
+        padding: 0 10px;
         }
         h2:not(.u-subtitle)
         {
@@ -33801,15 +33803,22 @@ progress[value]::-webkit-progress-bar {
 
 #overlay img{
  width: 100%;
+ 
 }
-
+#overlay img {
+    width: 100%;
+    max-width: 80px;
+}
 #contact{
   display: none;
   visbility: 'hidden';
 }
 
 
-
+body.u-body * ,
+.u-font-oswald.u-custom-font{
+    font-family: 'Roboto'!important;
+}
 
 
 #about{
