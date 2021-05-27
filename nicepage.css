@@ -33831,3 +33831,14 @@ body.u-body * ,
   display: none;
   visbility: 'hidden';
 }
+
+box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+.box img {
+  height: 60px;
+}
