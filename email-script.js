@@ -165,14 +165,14 @@ video.addEventListener('play', () => {
 				matuoklis.value = decodeMorse(morseString);
 
 
-			} else if (key === 'angry' && value > 0.6) {
+			} else if (key === 'angry' && value > 0.55) {
 				showImage('bruksnys');
 				morseString += "-";
 				morzesKodas.value = morseString;
 				matuoklis.value = decodeMorse(morseString);
 
 
-			} else if (key === 'sad' && value > 0.6) {
+			} else if (key === 'sad' && value > 0.55) {
 				showImage('backspace');
 
 				var index = morseString.split(" ");
@@ -181,8 +181,10 @@ video.addEventListener('play', () => {
 				morseString = index.join(" ");
 				matuoklis.value = decodeMorse(morseString);
 				morzesKodas.value = morseString;
-			} else if (matuoklis.value.substr(matuoklis.value.length - 1) == 'w') {
-				morseString.substr(0, morseString.length - 1);
+
+			} else if (matuoklis.value.slice(-2) == 'w ' ) {
+				console.log('sent');
+				morseString.substr(0, morseString.length - 2);
 				showImage('letter');
 				buttonclick();
 
