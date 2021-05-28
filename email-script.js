@@ -165,14 +165,14 @@ video.addEventListener('play', () => {
 				matuoklis.value = decodeMorse(morseString);
 
 
-			} else if (key === 'angry' && value > 0.55) {
+			} else if (key === 'angry' && value > 0.6) {
 				showImage('bruksnys');
 				morseString += "-";
 				morzesKodas.value = morseString;
 				matuoklis.value = decodeMorse(morseString);
 
 
-			} else if (key === 'sad' && value > 0.55) {
+			} else if (key === 'sad' && value > 0.6) {
 				showImage('backspace');
 
 				var index = morseString.split(" ");
