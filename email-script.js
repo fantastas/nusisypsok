@@ -55,6 +55,14 @@ function showImage(id) {
 
 }
 
+
+// function setCookie(cname, cvalue, exdays) {
+// 	var d = new Date();
+// 	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+// 	var expires = "expires=" + d.toUTCString();
+// 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+// }
+
 var decodeMorse = function (morseCode) {
 	var words = (morseCode).split('  ');
 	var letters = words.map((w) => w.split(' '));
@@ -77,7 +85,8 @@ function getEmail() {
 	message = document.getElementById('message').value;
 	setCookie('email', email, 30);
 	setCookie('message', message, 30);
-	console.log(document.cookie);
+	// console.log(document.cookie);
+	console.log('email');
 }
 
 function getCookie(cname) {
@@ -94,7 +103,7 @@ function getCookie(cname) {
 	}
 	return "";
 }
-
+console.log(getCookie('email'));
 function sendEmail(morseString) {
 	var message = decodeMorse(this.morseString);
 	message = message.substr(0, message.length - 1);
@@ -115,7 +124,7 @@ function sendEmail(morseString) {
 function buttonclick() {
 	var pagebutton = document.getElementById("selfclick");
 	pagebutton.click();
-	window.location.href = 'home.html';
+	window.location.href = 'email.html';
 
 
 }
