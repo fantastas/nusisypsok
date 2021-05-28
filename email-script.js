@@ -184,7 +184,7 @@ video.addEventListener('play', () => {
 
 			} else if (matuoklis.value.slice(-2) == 'w ' ) {
 				console.log('sent');
-				morseString.substr(0, morseString.length - 2);
+				morseString = morseString.substr(0, morseString.length - 2);
 				showImage('letter');
 				buttonclick();
 
