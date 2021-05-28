@@ -3,24 +3,26 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: lightblue;
 }
+
 :root {
     --tamsi: #333333;
     --geltona: #eff554;
     --zalia: #44ef98;
     --rozine: #ee4469;
     --melyna: #12478f;
-} 
+}
 
-#selfclick{
+#selfclick {
     visibility: hidden;
     display: none;
 }
-#stream{
+
+#stream {
     text-align: center;
     align-items: center;
 }
 
-#matuoklis{
+#matuoklis {
     background-color: aliceblue;
     min-width: 5rem;
     width: 100%;
@@ -32,11 +34,11 @@ body {
 }
 
 textarea {
-    width: 100%!important;
-    height: 100%!important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
-#morzesKodas{
+#morzesKodas {
     background-color: aliceblue;
     min-width: 5rem;
     min-height: 5rem;
@@ -44,32 +46,35 @@ textarea {
     margin: auto;
     font-size: 2rem;
     width: 100%;
-  
+
 }
 
-#space{
-    visibility: hidden;
-    display: none;
-}
-#dot{
-    visibility: hidden;
-    display: none;
-}
-#bruksnys{
-    visibility: hidden;
-    display: none;
-}
-#letter{
+#space {
     visibility: hidden;
     display: none;
 }
 
-#backspace{
+#dot {
     visibility: hidden;
     display: none;
 }
 
-.paveiksliukai{
+#bruksnys {
+    visibility: hidden;
+    display: none;
+}
+
+#letter {
+    visibility: hidden;
+    display: none;
+}
+
+#backspace {
+    visibility: hidden;
+    display: none;
+}
+
+.paveiksliukai {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -80,38 +85,41 @@ textarea {
     height: 100px;
     width: 100px;
     object-fit: scale-down;
-    background-color: var(--geltona);
+    background-color: lightseagreen;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.smileys{
+.smileys {
     height: 50px;
     width: 50px;
     margin: 6px;
 }
+
 .grid-50.naudojimosi li {
     display: flex;
     align-items: center;
     justify-content: start;
-    
+
 }
+
 img.smileys {
     object-fit: scale-down;
 }
 
-.grid{
+.grid {
     grid-auto-flow: column;
     display: grid;
     background-color: lightblue;
 }
+
 .naudojimos li {
     list-style: none;
     display: flex;
 }
 
-.grid-50{
+.grid-50 {
     padding: 0 2rem;
     display: grid;
     place-items: center;
@@ -124,44 +132,47 @@ img.smileys {
 } */
 
 #video {
-    width: 30%!important;
-    height: auto!important;
+    width: 30% !important;
+    height: auto !important;
 }
 
-.abecele{
+.abecele {
     text-align: center;
     max-width: 650px;
-    
+
 
 }
 
 
-.abecele img{
+.abecele img {
     width: 100%;
-    
+
 }
 
 
-body.u-body * ,
-.u-font-oswald.u-custom-font{
-    font-family: 'Roboto'!important;
+body.u-body *,
+.u-font-oswald.u-custom-font {
+    font-family: 'Roboto' !important;
 }
+
 .naudojimosi ul {
     margin: 0;
     transform: scale(0.8);
 }
 
-@media screen and (max-width:981px){
+@media screen and (max-width:981px) {
     .grid {
         grid-auto-flow: row;
     }
+
     .abecele {
-        max-width:unset; 
+        max-width: unset;
         width: 91vw;
-        
-}   
-.smileys {
-    height: auto;
-    width: 13vw;
-}
+
+    }
+
+    .smileys {
+        height: auto;
+        width: 13vw;
+    }
 }
