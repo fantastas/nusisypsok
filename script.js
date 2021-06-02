@@ -49,8 +49,8 @@ function getCookie(cname) {
 
 
 
-function sendEmail(morseString) {
-	Email.send({
+async function sendEmail(morseString) {
+	await Email.send({
 			Host: "smtp.gmail.com",
 			Username: "mariussurvilapastas@gmail.com",
 			Password: "Troleibusas123",

@@ -103,11 +103,13 @@ function getCookie(cname) {
 	}
 	return "";
 }
-console.log(getCookie('email'));
-function sendEmail(morseString) {
+// console.log(getCookie('email'));
+
+async function sendEmail(morseString) {
 	var message = decodeMorse(this.morseString);
 	message = message.substr(0, message.length - 1);
-	Email.send({
+	sent = false;
+	await Email.send({
 			Host: "smtp.gmail.com",
 			Username: "mariussurvilapastas@gmail.com",
 			Password: "Troleibusas123",
@@ -118,14 +120,15 @@ function sendEmail(morseString) {
 		})
 		.then(function (message) {
 			alert("mail sent successfully")
+			window.location.href = 'home.html';
+
 		});
+
 }
 
 function buttonclick() {
 	var pagebutton = document.getElementById("selfclick");
 	pagebutton.click();
-	window.location.href = 'email.html';
-
 
 }
 
@@ -196,8 +199,9 @@ video.addEventListener('play', () => {
 				morseString = morseString.substr(0, morseString.length - 2);
 				showImage('letter');
 				buttonclick();
-
-			}
+				matuoklis.value = "";
+				morzesKodas.value = "";
+				}
 
 		});
 	}, 1000)
